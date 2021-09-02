@@ -1,6 +1,6 @@
 {
-  "name": "@galaad/vuex-firestore",
-  "version": "1.0.0",
+  "name": "@galaadmoutoz/vuex-firestore",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,16 +9,34 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "tsc",
+    "prepare": "tsc",
     "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "firebase",
+    "vue",
+    "vuex",
+    "typescript",
+    "firebase orm",
+    "firebase vuex",
+    "vuejs"
+  ],
+  "author": "Galaad Moutoz",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GalaadMoutoz/custom-extensions"
+  },
+  "bugs": {
+    "url": "https://github.com/GalaadMoutoz/custom-extensions/issues"
+  },
+  "homepage": "https://github.com/GalaadMoutoz/custom-extensions#readme",
   "devDependencies": {
     "typescript": "^4.4.2"
   },
   "peerDependencies": {
+    "vue": "^2.6.12",
+    "vuex-module-decorators": "^1.0.1",
     "firebase": "^8.0.0"
   }
 }
