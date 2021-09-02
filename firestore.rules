@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow read: if isAdmin();
+    }
+
+    match /survey-categories/{categoryId} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    match /survey-questions/{questionId} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    match /survey-answers/{userId} {
+      allow read, write: if isOwner(userId);
+      allow read: if isAdmin();
+    }
+    
+    function isOwner(uid) {
+    	return request.auth != null && request.auth.uid == uid;
+    }
+    
+    match /{document=**} {
+      allow read, write: if isSuperAdmin();
+    }
+    
+    function isAdmin() {
+      return request.auth != null
+      	&& exists(/databases/$(database)/documents/users/$(request.auth.uid))
+      	&& get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.admin == true
+    }
+    
+    function isSuperAdmin() {
+      return request.auth != null
+      	&& exists(/databases/$(database)/documents/users/$(request.auth.uid))
+      	&& get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.superAdmin == true
+    }
+  }
+}
