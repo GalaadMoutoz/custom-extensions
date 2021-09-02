@@ -10,7 +10,7 @@ export default class FirestoreData {
   }
 
   public clone(keepId = false): any {
-    const clone = JSON.parse(JSON.stringify(this));
+    const clone = JSON.parse(JSON.stringify({ ...this }));
     if (!keepId) delete clone.id;
     delete clone.path;
     delete clone.docExists;

@@ -61,6 +61,7 @@ export default {
         emulatorPort: process.env.NODE_ENV === "development" ? 8080 : undefined,
         // ssl: false,
         settings: {
+          merge: true,
           ignoreUndefinedProperties: true,
         },
       },

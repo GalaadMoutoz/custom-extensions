@@ -15,6 +15,7 @@
     "functions": "cd functions && tsc -w"
   },
   "dependencies": {
+    "@galaadmoutoz/vuex-firestore": "^1.0.1",
     "@nuxtjs/firebase": "^7.6.1",
     "@types/grecaptcha": "^3.0.3",
     "core-js": "^3.15.1",
